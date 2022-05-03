@@ -18,7 +18,7 @@ public class MainTest {
     Main target;
 
     /** pattern */
-    DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSSS");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSSS");
 
     @BeforeEach
     void setUp() {
@@ -33,7 +33,7 @@ public class MainTest {
         var actual = target.getCurrentDateTime(null, null);
         assertThat(actual).isNotNull();
         System.out.println(actual);
-        System.out.println(actual.format(pattern));
+        System.out.println(actual.format(formatter));
 
         actual = target.getCurrentDateTime(Calendar.getInstance(), null);
         assertThat(actual).isNotNull();
@@ -56,6 +56,16 @@ public class MainTest {
         assertThat(actual)
                 .isNotNull()
                 .isEqualTo(LocalDateTime.of(2022, 5, 2, 10, 30, 15));
+        System.out.println(actual);
+    }
+
+    @Test
+    void parseTest() {
+        var dateTime = target.getDateTime(2022, 5, 3, 3, 15, 25);
+        var actual = target.convertStr2DateTime("20220503031525");
+        assertThat(actual)
+                .isNotNull()
+                .isEqualTo(dateTime);
         System.out.println(actual);
     }
 }

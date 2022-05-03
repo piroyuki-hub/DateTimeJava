@@ -1,5 +1,6 @@
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -33,5 +34,16 @@ public class Main {
      */
     LocalDateTime getDateTime(int year, int month, int day, int hour, int minute, int second) {
         return LocalDateTime.of(year, month, day, hour, minute, second);
+    }
+
+    /**
+     * 文字列を日時に変換.
+     *
+     * @param datetime 日付 (yyyyMMddHHmmss)
+     * @return {@link LocalDateTime}
+     */
+    LocalDateTime convertStr2DateTime(String datetime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        return LocalDateTime.parse(datetime, formatter);
     }
 }
