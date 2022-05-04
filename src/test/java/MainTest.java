@@ -40,7 +40,7 @@ public class MainTest {
         System.out.println(actual);
 
         // utc
-        var utc = target.getCurrentDateTime(Calendar.getInstance(), ZoneId.of("UTC"));
+        var utc = target.getCurrentDateTime(null, ZoneId.of("UTC"));
         assertThat(utc).isNotNull();
         System.out.printf("utc: %s\n", utc);
 
